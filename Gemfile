@@ -38,6 +38,7 @@ gem 'sprockets-rails'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'gentelella-rails'
+gem 'bootstrap-glyphicons'
 
 gem 'devise'
 gem 'apipie-rails'

@@ -56,6 +56,9 @@ GEM
       msgpack (~> 1.0)
     bootstrap-daterangepicker-rails (0.1.8)
       railties (>= 4.0, < 5.3)
+    bootstrap-glyphicons (0.0.1)
+      railties (>= 3.0)
+      sass (>= 3.2)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -300,6 +303,7 @@ PLATFORMS
 DEPENDENCIES
   apipie-rails
   bootsnap
+  bootstrap-glyphicons
   bootstrap-sass
   byebug
   capybara (~> 2.13)
