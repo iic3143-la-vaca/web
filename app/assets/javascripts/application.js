@@ -12,8 +12,8 @@
 //
 //= require rails-ujs
 //= require turbolinks
-//= require gentelella-custom
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require gentelella-custom
 //= require_tree .
