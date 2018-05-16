@@ -7,55 +7,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body class="nav-md">
-    <div class="container body" style="margin:0; padding: 0; width:100%">
-      <div class="main_container">
-        <!--sidebar-->
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border:0">
-              <a class="site_title">
-                <span>La Vaca</span>
-              </a>
-            </div>
-            <div id="sidebar-menu" class="main_menu_side main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a href="/home">Home</a></li>
-                  <li><a href="/new_project">Propose Project</a></li>
-                </ul>
-              </div>
-              <div class="menu_section">
-                <h3>Other</h3>
-                <ul class="nav side-menu">
-                  <li><a href="/about">About Us</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--/sidebar-->
-        <!--topnav-->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <ul class="nav navbar-nav pull-right">
-                <li class="">
-                  <a href="/login">User</a>
-                </li>
-              </ul>
-            </nav>
 
-          </div>
-        </div>
-        <!--/topnav-->
-        <!--page content-->
-        <div class="right_col" role="main">
-          <%= yield %>
-        </div>
-        <!--/page content-->
-      </div>
-    </div>
+  <body>
+    <%= yield %>
   </body>
 </html>
