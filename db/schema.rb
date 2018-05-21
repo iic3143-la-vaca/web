@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180521215144) do
+ActiveRecord::Schema.define(version: 20180521223258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,11 +43,9 @@ ActiveRecord::Schema.define(version: 20180521215144) do
 
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "proyect_id"
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["proyect_id"], name: "index_comments_on_proyect_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -55,25 +53,6 @@ ActiveRecord::Schema.define(version: 20180521215144) do
     t.string "headline"
     t.string "lead"
     t.string "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "proyect_tags", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "proyect_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["proyect_id"], name: "index_proyect_tags_on_proyect_id"
-    t.index ["tag_id"], name: "index_proyect_tags_on_tag_id"
-  end
-
-  create_table "proyects", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.date "deadline"
-    t.float "goal"
-    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -106,8 +85,5 @@ ActiveRecord::Schema.define(version: 20180521215144) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "bank_accounts", "users"
-  add_foreign_key "comments", "proyects"
   add_foreign_key "comments", "users"
-  add_foreign_key "proyect_tags", "proyects"
-  add_foreign_key "proyect_tags", "tags"
 end
