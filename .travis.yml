@@ -1,3 +1,5 @@
+notifications:
+   slack: la-vaca:V0UpimBtZp7IGdBxXnD5E4Zq
 deploy:
   - provider: heroku
     api_key:
