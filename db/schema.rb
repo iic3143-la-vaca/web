@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_21_223258) do
+ActiveRecord::Schema.define(version: 2018_05_21_231937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,12 +49,47 @@ ActiveRecord::Schema.define(version: 2018_05_21_223258) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "donations", force: :cascade do |t|
+    t.float "amount"
+    t.integer "status"
+    t.bigint "user_id"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_donations_on_project_id"
+    t.index ["user_id"], name: "index_donations_on_user_id"
+  end
+
   create_table "news", force: :cascade do |t|
     t.string "headline"
     t.string "lead"
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.float "goal"
+    t.integer "status"
+    t.datetime "deadline"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "rewards", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.float "lower_bound"
+    t.float "upper_bound"
+    t.boolean "dispatchable"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_rewards_on_project_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -86,4 +121,8 @@ ActiveRecord::Schema.define(version: 2018_05_21_223258) do
   add_foreign_key "addresses", "users"
   add_foreign_key "bank_accounts", "users"
   add_foreign_key "comments", "users"
+  add_foreign_key "donations", "projects"
+  add_foreign_key "donations", "users"
+  add_foreign_key "projects", "users"
+  add_foreign_key "rewards", "projects"
 end
