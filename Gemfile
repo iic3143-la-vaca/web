@@ -33,6 +33,12 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'popper_js', '~> 1.12.9'
+gem 'sprockets-rails'
+gem 'jquery-rails'
+gem 'bootstrap-sass'
+gem 'gentelella-rails'
+gem 'bootstrap-glyphicons'
 
 gem 'devise'
 gem 'apipie-rails'
