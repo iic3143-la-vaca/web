@@ -1,8 +1,17 @@
+language: ruby
+rvm:
+  - 2.4.0
+
 notifications:
    slack: la-vaca:V0UpimBtZp7IGdBxXnD5E4Zq
+
 before_script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
+
+script:
+  - bundle exec rspec spec
+
 deploy:
   - provider: heroku
     api_key:
