@@ -1,15 +1,20 @@
 notifications:
    slack: la-vaca:V0UpimBtZp7IGdBxXnD5E4Zq
+before_script:
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
 deploy:
   - provider: heroku
     api_key:
       secure: c4C/GvuCshi3Z5drStfO4/mr5StrfWY5SFqlGHqrvK+PmYSMUFjXY4MYw1Joi9aWbT5Z4ILGw3eIJg6mPTz1Dzaf6zzSVXVha1IrPaMbSeOLpwLJCJIwh59Be/onLvyuURkCoxReYgZfSAroNhsSXfMRite/Qd3wFTqNck8QnmHIVnvgSsd30/czssx5CxBFXxyqWYdr75tg4L6/U917nB9HRhgKOBMeyFwOWWoZ3In/vaGRlWYxbVdVdzBpr7KDCorJa26rwNAKMzAYknzssBbHVshUAfNlx7dQMuP+Zi50VZJmzSgx15j83jLAtM5i7OuSW521w0Cfqi4QJZQ+RqXGy6Ge5LLa/9y3smpXe81Kgrv3Iz2n81irI6gLXcWnm51JKPfo1kL0WmwBFo0/qGkAkPgNpGBZTR4drExxeF00hw9HcHxFQLfeWkwh3b3PXD5w91j7n9AbiSdDURfGd/J6DyOBAa5BOPeNZoxOGQeelArR0OVhu5L2xZKCmni3lY9EbDtpWHxsdvx/7VA7qJngzs1nbc2L+fj3Ji5aafnv+OiUUkWV+EHrKJqZI1ezyey3M5iyTFx7xl5ibwTVtmp6qaAPPNyuqJf/CIAWP+rRTdASwU2d+9aB83CSe27XEZXdOLiK7q/H88YkN1c1Je6pk7RSj6S/GBFzhUJN6J8=
     app: la-vaca-staging
     on:
+      repo: iic3143-la-vaca/web
       branch: development
   - provider: heroku
     api_key:
       secure: c4C/GvuCshi3Z5drStfO4/mr5StrfWY5SFqlGHqrvK+PmYSMUFjXY4MYw1Joi9aWbT5Z4ILGw3eIJg6mPTz1Dzaf6zzSVXVha1IrPaMbSeOLpwLJCJIwh59Be/onLvyuURkCoxReYgZfSAroNhsSXfMRite/Qd3wFTqNck8QnmHIVnvgSsd30/czssx5CxBFXxyqWYdr75tg4L6/U917nB9HRhgKOBMeyFwOWWoZ3In/vaGRlWYxbVdVdzBpr7KDCorJa26rwNAKMzAYknzssBbHVshUAfNlx7dQMuP+Zi50VZJmzSgx15j83jLAtM5i7OuSW521w0Cfqi4QJZQ+RqXGy6Ge5LLa/9y3smpXe81Kgrv3Iz2n81irI6gLXcWnm51JKPfo1kL0WmwBFo0/qGkAkPgNpGBZTR4drExxeF00hw9HcHxFQLfeWkwh3b3PXD5w91j7n9AbiSdDURfGd/J6DyOBAa5BOPeNZoxOGQeelArR0OVhu5L2xZKCmni3lY9EbDtpWHxsdvx/7VA7qJngzs1nbc2L+fj3Ji5aafnv+OiUUkWV+EHrKJqZI1ezyey3M5iyTFx7xl5ibwTVtmp6qaAPPNyuqJf/CIAWP+rRTdASwU2d+9aB83CSe27XEZXdOLiK7q/H88YkN1c1Je6pk7RSj6S/GBFzhUJN6J8=
     app: la-vaca-production
     on:
+      repo: iic3143-la-vaca/web
       branch: master
