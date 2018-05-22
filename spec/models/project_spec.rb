@@ -11,6 +11,7 @@ RSpec.describe Project, type: :model do
   it { should have_many(:tags).through(:project_tags) }
   it { should have_many(:rewards) }
   it { should have_many(:donations) }
+  it { should accept_nested_attributes_for(:rewards) }
 
   # Validation tests
   it { should validate_uniqueness_of(:title).case_insensitive }
