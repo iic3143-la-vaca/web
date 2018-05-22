@@ -1,0 +1,24 @@
+<!--topnav-->
+<div class="top_nav">
+  <div class="nav_menu">
+    <nav>
+      <ul class="nav navbar-nav pull-right">
+        <% if current_user %>
+          <li class="">
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li class="">
+            <%= link_to "Sign in", new_user_session_path %>
+          </li>
+          <li class="">
+            <%= link_to "Register", new_user_registration_path %>
+          </li>
+        <% end %>
+
+      </ul>
+    </nav>
+
+  </div>
+</div>
+<!--/topnav-->

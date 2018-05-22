@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-md-6 col-sm-8 col-xs-12 col-centered">
+    <div class="x_panel tile">
+      <div class="x_title">
+        <h2>Log in</h2>
+        <div class="clearfix"></div>
+      </div>
+      <p class="x_content">
+        <%= form_for(resource,
+                     as: resource_name,
+                     url: session_path(resource_name),
+                     :html => {:class => 'form-horizontal form-label-left input_mask'}) do |f| %>
+            <div class="field">
+              <%= f.label :email, class: "col-md-12 col-sm-12 col-xs-12" %><br />
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder: "Email" %>
+              </div>
+            </div>
+            <div class="field">
+              <%= f.label :password, class: "col-md-12 col-sm-12 col-xs-12", style:"padding-top: 20px;" %><br />
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder: "Password" %>
+              </div>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+                <div class="field col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px;">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
+            <% end -%>
+
+            <div class="field ln_solid" style="margin-top: 180px"></div>
+            <p class="actions" style="text-align: center;">
+                <%= f.submit "Log in", class:"btn btn-default", style:"text-align: center;"%>
+            </p>
+
+        <% end %>
+
+        <!--<div class="ln_solid" style="margin: 10px"></div>-->
+        <!--<p style="text-align: center;">-->
+          <!--<button type="submit" class="btn btn-default" style="text-align: center;">Log In</button>-->
+        <!--</p>-->
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-6 col-sm-8 col-xs-12 col-centered">
+    <div class="x_panel tile">
+      <div class="x_title">
+        <h2>Not a member?</h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <p style="text-align: center;">
+          <%= render "devise/shared/links" %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
