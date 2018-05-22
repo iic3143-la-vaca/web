@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_22_003614) do
+ActiveRecord::Schema.define(version: 2018_05_22_005536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2018_05_22_003614) do
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_comments_on_project_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -67,6 +69,8 @@ ActiveRecord::Schema.define(version: 2018_05_22_003614) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_news_on_project_id"
     t.index ["user_id"], name: "index_news_on_user_id"
   end
 
@@ -140,9 +144,11 @@ ActiveRecord::Schema.define(version: 2018_05_22_003614) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "bank_accounts", "users"
+  add_foreign_key "comments", "projects"
   add_foreign_key "comments", "users"
   add_foreign_key "donations", "projects"
   add_foreign_key "donations", "users"
+  add_foreign_key "news", "projects"
   add_foreign_key "news", "users"
   add_foreign_key "project_tags", "projects"
   add_foreign_key "project_tags", "tags"
