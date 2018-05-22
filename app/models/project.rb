@@ -17,4 +17,7 @@ class Project < ApplicationRecord
   validates :description, presence: true
   validates :goal, presence: true
   validates :status, presence: true
+
+  # Nested attributes
+  accepts_nested_attributes_for :rewards
 end

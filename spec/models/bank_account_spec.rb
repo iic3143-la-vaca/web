@@ -7,7 +7,7 @@ RSpec.describe BankAccount, type: :model do
   # Association test
   it { should belong_to(:user) }
 
-  # Validation test 
+  # Validation test
   it { should validate_presence_of(:bank) }
   it { should validate_presence_of(:account) }
   it { should validate_presence_of(:rut) }

@@ -6,7 +6,7 @@ feature 'Project is posted' do
 
 
   scenario 'with valid user credentials' do
-    login_as(user, :scope => :user)
+    login_as(user, scope: :user)
     visit new_projects_path
 
     fill_in 'Title', with: project.title
@@ -23,7 +23,7 @@ feature 'Project is posted' do
       fill_in "rewards_attributes[#{i}][upper_bound]", with: reward.upper_bound
       fill_in "rewards_attributes[#{i}][dispatchable]", with: reward.dispatchable
     end
-    
+
     click_button 'Submit'
 
     expect(page).to have_text 'Project created succesfully.'

@@ -10,7 +10,7 @@ RSpec.describe Reward, type: :model do
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:lower_bound) }
   it { should validate_presence_of(:upper_bound) }
-  it { should validate_numericality_of(:lower_bound)}
+  it { should validate_numericality_of(:lower_bound) }
   it { should validate_numericality_of(:upper_bound) }
   it { should validate_presence_of(:dispatchable) }
 end
