@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="nav-md">
+    <%= render 'layouts/messages' %>
     <div class="container body" style="margin:0; padding: 0; width:100%">
       <div class="main_container">
         <!--sidebar-->
@@ -36,20 +37,7 @@
           </div>
         </div>
         <!--/sidebar-->
-        <!--topnav-->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <ul class="nav navbar-nav pull-right">
-                <li class="">
-                  <a href="/login">User</a>
-                </li>
-              </ul>
-            </nav>
-
-          </div>
-        </div>
-        <!--/topnav-->
+        <%= render 'layouts/top_nav' %>
         <!--page content-->
         <div class="right_col" role="main">
           <%= yield %>

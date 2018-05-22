@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 feature 'User signs in' do
-  let!(:user) { create(:user) }
+  let!(:user1) { create(:user) }
+  let!(:user2) { create(:user) }
 
   scenario 'with valid credentials' do
 
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in 'Email', with: user1.email
+    fill_in 'Password', with: user1.password
     click_button 'Log in'
 
     expect(page).to have_text 'Signed in successfully.'
@@ -20,8 +21,8 @@ feature 'User signs in' do
 
     visit new_user_session_path
 
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in 'Email', with: user2.email
+    fill_in 'Password', with: user2.password + '1234'
     click_button 'Log in'
 
     expect(page).to have_text 'Invalid Email or password.'
