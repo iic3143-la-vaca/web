@@ -9,5 +9,5 @@ class Reward < ApplicationRecord
   validates :description, presence: true
   validates :lower_bound, presence: true, numericality: true
   validates :upper_bound, presence: true, numericality: true
-  validates :dispatchable, presence: true
+  validates :dispatchable, inclusion: { in: [true, false] }
 end

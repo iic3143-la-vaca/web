@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Project is posted' do
   let!(:user) { create(:user) }
-  let!(:project) { create(:project) }
+  let!(:project) { create(:project, user: user) }
 
 
   scenario 'with valid user credentials' do
