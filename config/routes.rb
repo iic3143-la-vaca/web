@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   root to: 'projects#index'
   resources :projects, only: [:new, :create, :show]
 
-  get 'home' => 'projects#index'
   get 'about' => 'pages#about'
 
   # Legacy routes
