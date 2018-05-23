@@ -1,0 +1,127 @@
+<h2>Create a project</h2>
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+    <%= form_for @project, :html => { :class => "form-horizontal form-label-left input_mask"} do |f| %>
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>General Information
+        </h2>
+        <div class="clearfix"></div>
+      </div>
+
+      <% if @project.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@project.errors.count, "error") %> prohibited this article from being saved:</h2>
+      
+          <ul>
+          <% @project.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="x_content">
+        <br>
+          <label class="control-label col-md-2 col-sm-2 col-xs-12">Title</label>
+          <div class="col-md-10 col-sm-10 col-xs-12 form-general">
+            <!-- <input class="form-control" id="project_name" required="required" placeholder="Enter the name of the project. Remember this is the first thing visitors will see." type="text"> -->
+            <%= f.text_field :title, class: "form-control", required: true, placeholder: "Enter the name of the project. Remember this is the first thing visitors will see." %>
+          </div>
+
+          <label class="control-label col-md-2 col-sm-2 col-xs-12">Description</label>
+          <div class="col-md-10 col-sm-10 col-xs-12 form-general">
+            <!-- <textarea class="form-control" id="project_description" required="required" placeholder="Describe the purpose of the project." type="text"></textarea> -->
+            <%= f.text_area :description, class: "form-control", required: true, placeholder: "Describe the purpose of the project." %>
+          </div>
+
+          <label class="control-label col-md-2 col-sm-2 col-xs-12">Financing</label>
+          <div class="col-md-10 col-sm-10 col-xs-12 form-general">
+            <!-- <textarea class="form-control" id="project_financing" required="required" placeholder="Describe why you need financing for your project." type="text"></textarea> -->
+            <%= f.text_area :financing_description, class: "form-control", required: true, placeholder: "Describe why you need financing for your project." %>
+          </div>
+
+          <label class="control-label col-md-2 col-sm-2 col-xs-12">Project's Creator</label>
+          <div class="col-md-10 col-sm-10 col-xs-12 form-general">
+            <!-- <textarea class="form-control" id="project_creator" required="required" placeholder="Tell the collaborators about you." type="text"></textarea> -->
+            <%= f.text_area :creators_description, class: "form-control", required: true, placeholder: "Tell the collaborators about you." %>
+          </div>
+        </form>
+
+        <div class="x_title" style="margin-top: 20px;">
+          <h2>Financial Information</h2>
+          <div class="clearfix"></div>
+        </div>
+
+        <form class="form-horizontal form-label-left input_mask">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Financial Objective</label>
+          <div class="col-md-3 col-sm-3 col-xs-12 form-general">
+            <!-- <input class="form-control" id="financial_objective" required="required" placeholder="$$$" type="text"> -->
+            <%= f.number_field :goal, class: "form-control", required: true, placeholder: "$$$" %>
+            <span class="form-control-feedback right">CLP</span>
+          </div>
+
+          <label class="control-label col-md-2 col-sm-2 col-xs-12">Ending Date</label>
+          <div class="col-md-4 col-sm-4 col-xs-12 form-general">
+            <!-- <input class="form-control" id="ending_date" required="required" placeholder="dd-mm-yyy" type="text"> -->
+            <%= f.date_field :deadline, class: "form-control", required: true, placeholder: "dd-mm-yyyy" %>
+          </div>
+
+          <label class="col-md-12 col-sm-12 col-xs-12">Rewards</label>
+          <div class="col-md-3 col-sm-3 col-xs-3"><i>Name</i></div>
+          <div class="col-md-4 col-sm-4 col-xs-4"><i>Description</i></div>
+          <div class="col-md-2 col-sm-2 col-xs-2"><i>Min</i></div>
+          <div class="col-md-2 col-sm-2 col-xs-2"><i>Max</i></div>
+          <div class="col-md-1 col-sm-1 col-xs-1"><i>Dispatchable</i></div>
+
+          <%= f.fields_for :rewards do |ff| %>
+            <div class="col-md-3 col-sm-3 col-xs-3 form-general">
+              <!-- <input class="form-control" placeholder="" type="text"> -->
+              <%= ff.text_field :name, class: "form-control" %>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4 form-general">
+              <!-- <input class="form-control" placeholder="$$$" type="text"> -->
+              <%= ff.text_field :description, class: "form-control" %>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 form-general">
+              <!-- <input class="form-control" placeholder="$$$" type="text"> -->
+              <%= ff.number_field :lower_bound, class: "form-control" %>
+              <span class="form-control-feedback right hidden-xs">CLP</span>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-2 form-general">
+              <!-- <input class="form-control" placeholder="$$$" type="text"> -->
+              <%= ff.number_field :upper_bound, class: "form-control" %>
+              <span class="form-control-feedback right hidden-xs">CLP</span>
+            </div>
+            <div class="col-md-1 col-sm-1 col-xs-1 form-general">
+              <!-- <input class="form-control" placeholder="$$$" type="text"> -->
+              <%= ff.check_box :dispatchable, class: "form-control" %>
+            </div>
+          <% end %>
+          <div class="clearfix"></div>
+
+          <!--
+          <label class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 10px; margin-bottom: 0px;">Bank Account</label>
+          <div class="col-md-6 col-sm-6 col-xs-12 form-general">
+            <input class="form-control" id="bank_name" required="required" placeholder="Bank" type="text">
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 form-general">
+            <input class="form-control" id="bank_account_owner" required="required" placeholder="Owner's Name" type="text">
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12   form-general">
+            <input class="form-control" id="bank_account_number" required="required" placeholder="Account Number" type="text">
+          </div>
+          -->
+        </form>
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+          <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

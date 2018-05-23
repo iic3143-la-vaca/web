@@ -7,8 +7,43 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-    <%= yield %>
+  <body class="nav-md">
+    <%= render 'layouts/messages' %>
+    <div class="container body" style="margin:0; padding: 0; width:100%">
+      <div class="main_container">
+        <!--sidebar-->
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border:0">
+              <a class="site_title">
+                <span>La Vaca</span>
+              </a>
+            </div>
+            <div id="sidebar-menu" class="main_menu_side main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="<%= new_project_path %>">Propose Project</a></li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3>Other</h3>
+                <ul class="nav side-menu">
+                  <li><a href="/about">About Us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/sidebar-->
+        <%= render 'layouts/top_nav' %>
+        <!--page content-->
+        <div class="right_col" role="main">
+          <%= yield %>
+        </div>
+        <!--/page content-->
+      </div>
+    </div>
   </body>
 </html>
