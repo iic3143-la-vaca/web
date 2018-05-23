@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
       flash[:success] = "Project created succesfully."
       redirect_to @project
     else
-      render :action => :new
+      render action: :new
     end
   end
 
@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
 
     def project_params
       # whitelist params
-      params.require(:project).permit(:title, :description, :goal, 
+      params.require(:project).permit(:title, :description, :goal,
         :deadline, :financing_description, :creators_description,
         rewards_attributes: [ :id, :name, :description, :lower_bound,
           :upper_bound, :dispatchable]
