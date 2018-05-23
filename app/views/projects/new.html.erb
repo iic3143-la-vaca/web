@@ -1,6 +1,7 @@
 <h2>Create a project</h2>
 <div class="row">
   <div class="col-md-12 col-xs-12">
+    <%= form_for @project, :html => { :class => "form-horizontal form-label-left input_mask"} do |f| %>
     <div class="x_panel">
       <div class="x_title">
         <h2>General Information
@@ -9,7 +10,6 @@
       </div>
       <div class="x_content">
         <br>
-        <form class="form-horizontal form-label-left input_mask">
           <label class="control-label col-md-2 col-sm-2 col-xs-12">Title</label>
           <div class="col-md-10 col-sm-10 col-xs-12 form-general">
             <input class="form-control" id="project_name" required="required" placeholder="Enter the name of the project. Remember this is the first thing visitors will see." type="text">
@@ -88,5 +88,6 @@
         </div>
       </div>
     </div>
+    <% end %>
   </div>
 </div>

@@ -6,7 +6,7 @@ RSpec.describe Reward, type: :model do
   it { should have_many(:users).through(:user_rewards) }
 
   # Validations
-  it { should validate_presence_of(:title) }
+  it { should validate_presence_of(:name) }
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:lower_bound) }
   it { should validate_presence_of(:upper_bound) }

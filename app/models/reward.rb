@@ -5,7 +5,7 @@ class Reward < ApplicationRecord
   has_many :users, through: :user_rewards
 
   # Validations
-  validates :title, presence: true
+  validates :name, presence: true
   validates :description, presence: true
   validates :lower_bound, presence: true, numericality: true
   validates :upper_bound, presence: true, numericality: true
