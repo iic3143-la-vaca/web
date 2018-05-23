@@ -1,13 +1,17 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show]
 
+  api :GET, '/projects'
   def index
     @projects = Project.all
   end
 
+  api :GET, '/projects.id'
+  param :id, Bignum, required: true
   def show
   end
 
+  api :GET, '/projects/new_project'
   def new
     @project = Project.new
   end
