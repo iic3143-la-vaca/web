@@ -15,6 +15,7 @@ class Project < ApplicationRecord
   validates :title, presence: true, uniqueness: { case_sensitive: false }
   validates :deadline, presence: true
   validates :description, presence: true
+  validates :financing_description, presence: true
   validates :goal, presence: true
   validates :status, presence: true
 

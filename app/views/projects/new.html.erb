@@ -12,12 +12,14 @@
         <br>
           <label class="control-label col-md-2 col-sm-2 col-xs-12">Title</label>
           <div class="col-md-10 col-sm-10 col-xs-12 form-general">
-            <input class="form-control" id="project_name" required="required" placeholder="Enter the name of the project. Remember this is the first thing visitors will see." type="text">
+            <!-- <input class="form-control" id="project_name" required="required" placeholder="Enter the name of the project. Remember this is the first thing visitors will see." type="text"> -->
+            <%= f.text_field :title, class: "form-control", required: true, placeholder: "Enter the name of the project. Remember this is the first thing visitors will see." %>
           </div>
 
           <label class="control-label col-md-2 col-sm-2 col-xs-12">Description</label>
           <div class="col-md-10 col-sm-10 col-xs-12 form-general">
-            <textarea class="form-control" id="project_description" required="required" placeholder="Describe the purpose of the project." type="text"></textarea>
+            <!-- <textarea class="form-control" id="project_description" required="required" placeholder="Describe the purpose of the project." type="text"></textarea> -->
+            <%= f.text_area :description, class: "form-control", required: true, placeholder: "Describe the purpose of the project." %>
           </div>
 
           <label class="control-label col-md-2 col-sm-2 col-xs-12">Financing</label>
