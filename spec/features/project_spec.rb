@@ -14,7 +14,7 @@ feature 'Project is posted' do
     fill_in 'project[financing_description]', with: project.financing_description
     fill_in 'project[creators_description]', with: project.creators_description
 
-    fill_in 'Financial Objective', with: project.goal
+    fill_in 'project[goal]', with: project.goal
     fill_in 'Ending Date', with: project.ending_date
 
     project.rewards.each_with_index do |reward, i|
