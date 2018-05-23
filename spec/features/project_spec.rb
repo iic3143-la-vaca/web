@@ -9,10 +9,10 @@ feature 'Project is posted' do
     login_as(user, scope: :user)
     visit new_projects_path
 
-    fill_in 'project_title', with: project.title
-    fill_in 'Description', with: project.description
-    fill_in 'Financing', with: project.financing_description
-    fill_in 'Project\'s Creator', with: project.about_creators
+    fill_in 'project[title]', with: project.title
+    fill_in 'project[description]', with: project.description
+    fill_in 'project[financing_description]', with: project.financing_description
+    fill_in 'project[creators_description]', with: project.creators_description
 
     fill_in 'Financial Objective', with: project.goal
     fill_in 'Ending Date', with: project.ending_date

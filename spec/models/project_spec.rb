@@ -18,6 +18,7 @@ RSpec.describe Project, type: :model do
   it { should validate_presence_of(:deadline) }
   it { should validate_presence_of(:description) }
   it { should validate_presence_of(:financing_description) }
+  it { should validate_presence_of(:creators_description) }
   it { should validate_presence_of(:goal) }
   it { should validate_presence_of(:status) }
 end

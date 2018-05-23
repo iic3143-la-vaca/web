@@ -16,6 +16,7 @@ class Project < ApplicationRecord
   validates :deadline, presence: true
   validates :description, presence: true
   validates :financing_description, presence: true
+  validates :creators_description, presence: true
   validates :goal, presence: true
   validates :status, presence: true
 
