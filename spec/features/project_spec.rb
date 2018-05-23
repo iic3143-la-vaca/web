@@ -2,14 +2,13 @@ require 'rails_helper'
 
 feature 'Project is posted' do
   let!(:user) { create(:user) }
-  let!(:project) { create(:project, user: user) }
-
 
   scenario 'with valid user credentials' do
     login_as(user, scope: :user)
+    project = create(:project, user: user)
     visit new_project_path
 
-    fill_in 'project[title]', with: project.title
+    fill_in 'project[title]', with: Faker::Company.unique.name
     fill_in 'project[description]', with: project.description
     fill_in 'project[financing_description]', with: project.financing_description
     fill_in 'project[creators_description]', with: project.creators_description
@@ -34,6 +33,6 @@ feature 'Project is posted' do
 
   scenario 'with invalid user credentials' do
     visit new_project_path
-    expect(page.status_code).to eq(401)
+    expect(page).to have_text 'Log in'
   end
 end
