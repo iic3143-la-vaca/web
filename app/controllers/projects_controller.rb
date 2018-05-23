@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   end
 
   api :GET, '/projects.id'
-  param :id, Bignum, required: true
+  param :id, String, required: true
   def show
   end
 
