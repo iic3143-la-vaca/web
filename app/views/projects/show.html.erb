@@ -1,0 +1,93 @@
+<h2><%= @project.title %></h2>
+<div class="row">
+  <div class="col-md-9 col-sm-8 col-xs-12">
+    <div class="x_panel tile">
+      <div class="x_title">
+        <!-- LINK TO PROJECT'S DESCRIPTION-->
+        <h2>Support My Project</h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <div class="project_img">
+          <%= image_tag "vaca.jpg" %>
+        </div>
+        <br>
+        <div class="x_title">
+          <h3>About the project</h3>
+          <div class="clearfix"></div>
+        </div>
+        <div><%= @project.description %></div>
+
+        <div class="x_title">
+          <h3>About the financing</h3>
+          <div class="clearfix"></div>
+        </div>
+        <div><%= @project.financing_description %></div>
+
+        <div class="x_title">
+          <h3>About us</h3>
+          <div class="clearfix"></div>
+        </div>
+        <div><%= @project.creators_description %></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-4 col-xs-4">
+    <div class="row">
+      <div class="x_panel tile">
+        <div class="x_content">
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <p style="font-size: 36px; text-align: center; color: green;">XX%</p>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <p style="text-align: center;"><b>$xxx.xxx</b></p>
+            <p style="text-align: center;">collected out of</p>
+            <p style="text-align: center;"><%= number_to_currency(@project.goal) %></p>
+          </div>
+          <div class="col-md-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="ln_solid" style="margin: 10px"></div>
+            <p style="text-align: center;">Deadline: <%= (@project.deadline.strftime("%d-%m-%Y")) %></p>
+            <div class="ln_solid" style="margin: 10px"></div>
+          </div>
+          <p style="text-align: center;">
+            <button type="submit" class="btn btn-success" style="text-align: center;">Collaborate</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-4 col-xs-4">
+    <div class="row">
+      <div class="x_panel tile">
+        <div class="x_title">
+          <h3>Contact</h3>
+        </div>
+        <!-- LINK TO POSTULANTE USER-->
+        <div class="x_content">
+          <p style="text-align: center;">pseudo xxx</p>
+          <p style="text-align: center;">email xxxx@xxx</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-4 col-xs-4">
+    <div class="row">
+      <div class="x_panel tile">
+        <div class="x_title">
+          <h3>We offer...</h3>
+        </div>
+        <div class="x_content">
+          <!-- LINK TO CONTERPARTS-->
+          <% 3. times do |i| %>
+              <p style=" color: green;">For $XXX to $XXX:</p>
+              <p>Something</p>
+              <div class="ln_solid" style="margin: 10px"></div>
+          <% end %>
+          <p style="text-align: center;">
+            <button type="submit" class="btn btn-success" style="text-align: center;">Collaborate</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

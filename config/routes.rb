@@ -8,9 +8,10 @@ Rails.application.routes.draw do
   }
 
   # custom routes
-  root to: 'pages#home'
-  resource :projects
-  get 'home' => 'pages#home'
+  root to: 'projects#index'
+  resource :projects, only: [:new, :show]
+
+  get 'home' => 'projects#index'
   get 'about' => 'pages#about'
 
   # Legacy routes
