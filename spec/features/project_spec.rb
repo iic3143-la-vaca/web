@@ -7,7 +7,7 @@ feature 'Project is posted' do
 
   scenario 'with valid user credentials' do
     login_as(user, scope: :user)
-    visit new_projects_path
+    visit new_project_path
 
     fill_in 'project[title]', with: project.title
     fill_in 'project[description]', with: project.description
@@ -33,7 +33,7 @@ feature 'Project is posted' do
   end
 
   scenario 'with invalid user credentials' do
-    visit new_projects_path
+    visit new_project_path
     expect(page.status_code).to eq(401)
   end
 end

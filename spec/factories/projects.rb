@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :project do
-    title { Faker::Company.name }
+    title { Faker::Company.unique.name  }
     description { Faker::Company.catch_phrase }
     financing_description { Faker::HarryPotter.quote }
     creators_description { Faker::StarWars.quote }
