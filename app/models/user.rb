@@ -8,6 +8,7 @@ class User < ApplicationRecord
   enum role: [:admin, :normal], _suffix: true
 
   # Associations
+  has_many :user_rewards
   has_many :rewards, through: :user_rewards
   has_many :user_rewards
   has_many :bank_accounts

@@ -1,6 +1,7 @@
 <h2>Create a project</h2>
 <div class="row">
   <div class="col-md-12 col-xs-12">
+    <%= form_for @project, :html => { :class => "form-horizontal form-label-left input_mask"} do |f| %>
     <div class="x_panel">
       <div class="x_title">
         <h2>General Information
@@ -9,25 +10,28 @@
       </div>
       <div class="x_content">
         <br>
-        <form class="form-horizontal form-label-left input_mask">
           <label class="control-label col-md-2 col-sm-2 col-xs-12">Title</label>
           <div class="col-md-10 col-sm-10 col-xs-12 form-general">
-            <input class="form-control" id="project_name" required="required" placeholder="Enter the name of the project. Remember this is the first thing visitors will see." type="text">
+            <!-- <input class="form-control" id="project_name" required="required" placeholder="Enter the name of the project. Remember this is the first thing visitors will see." type="text"> -->
+            <%= f.text_field :title, class: "form-control", required: true, placeholder: "Enter the name of the project. Remember this is the first thing visitors will see." %>
           </div>
 
           <label class="control-label col-md-2 col-sm-2 col-xs-12">Description</label>
           <div class="col-md-10 col-sm-10 col-xs-12 form-general">
-            <textarea class="form-control" id="project_description" required="required" placeholder="Describe the purpose of the project." type="text"></textarea>
+            <!-- <textarea class="form-control" id="project_description" required="required" placeholder="Describe the purpose of the project." type="text"></textarea> -->
+            <%= f.text_area :description, class: "form-control", required: true, placeholder: "Describe the purpose of the project." %>
           </div>
 
           <label class="control-label col-md-2 col-sm-2 col-xs-12">Financing</label>
           <div class="col-md-10 col-sm-10 col-xs-12 form-general">
-            <textarea class="form-control" id="project_financing" required="required" placeholder="Describe why you need financing for your project." type="text"></textarea>
+            <!-- <textarea class="form-control" id="project_financing" required="required" placeholder="Describe why you need financing for your project." type="text"></textarea> -->
+            <%= f.text_area :financing_description, class: "form-control", required: true, placeholder: "Describe why you need financing for your project." %>
           </div>
 
           <label class="control-label col-md-2 col-sm-2 col-xs-12">Project's Creator</label>
           <div class="col-md-10 col-sm-10 col-xs-12 form-general">
-            <textarea class="form-control" id="project_creator" required="required" placeholder="Tell the collaborators about you." type="text"></textarea>
+            <!-- <textarea class="form-control" id="project_creator" required="required" placeholder="Tell the collaborators about you." type="text"></textarea> -->
+            <%= f.text_area :creators_description, class: "form-control", required: true, placeholder: "Tell the collaborators about you." %>
           </div>
         </form>
 
@@ -39,7 +43,8 @@
         <form class="form-horizontal form-label-left input_mask">
           <label class="control-label col-md-3 col-sm-3 col-xs-12">Financial Objective</label>
           <div class="col-md-3 col-sm-3 col-xs-12 form-general">
-            <input class="form-control" id="financial_objective" required="required" placeholder="$$$" type="text">
+            <!-- <input class="form-control" id="financial_objective" required="required" placeholder="$$$" type="text"> -->
+            <%= f.text_field :goal, class: "form-control", required: true, placeholder: "$$$" %>
             <span class="form-control-feedback right">CLP</span>
           </div>
 
@@ -88,5 +93,6 @@
         </div>
       </div>
     </div>
+    <% end %>
   </div>
 </div>

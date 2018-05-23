@@ -15,6 +15,11 @@ class Project < ApplicationRecord
   validates :title, presence: true, uniqueness: { case_sensitive: false }
   validates :deadline, presence: true
   validates :description, presence: true
+  validates :financing_description, presence: true
+  validates :creators_description, presence: true
   validates :goal, presence: true
   validates :status, presence: true
+
+  # Nested attributes
+  accepts_nested_attributes_for :rewards
 end

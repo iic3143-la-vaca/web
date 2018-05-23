@@ -1,2 +1,0 @@
-class Proyect < ApplicationRecord
-end
