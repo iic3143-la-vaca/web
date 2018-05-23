@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/iic3143-la-vaca/web.svg?branch=master)](https://travis-ci.org/iic3143-la-vaca/web)
+
+[![Build Status](https://travis-ci.org/iic3143-la-vaca/web.svg?branch=development)](https://travis-ci.org/iic3143-la-vaca/web)
+
 # La Vaca
 
 La Vaca is a collaborative crowd-funding platform, that aims to support environmental initiatives. You will find here numerous projects fighting for a sustainable economy, the respect of our environment, etc... Our objective is to support them by providing a collaborative source of funding, and make those ideas come true.
