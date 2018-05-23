@@ -64,8 +64,8 @@
         </div>
         <!-- LINK TO POSTULANTE USER-->
         <div class="x_content">
-          <p style="text-align: center;">pseudo xxx</p>
-          <p style="text-align: center;">email xxxx@xxx</p>
+          <p style="text-align: center;"><%= @project.user.name %></p>
+          <p style="text-align: center;">email <%= @project.user.email %></p>
         </div>
       </div>
     </div>
@@ -78,9 +78,9 @@
         </div>
         <div class="x_content">
           <!-- LINK TO CONTERPARTS-->
-          <% 3. times do |i| %>
-              <p style=" color: green;">For $XXX to $XXX:</p>
-              <p>Something</p>
+          <% @project.rewards.each do |reward| %>
+              <p style=" color: green;">For <%=number_to_currency(reward.lower_bound)%> to <%=number_to_currency(reward.upper_bound)%>:</p>
+              <p><%= reward.name %></p>
               <div class="ln_solid" style="margin: 10px"></div>
           <% end %>
           <p style="text-align: center;">

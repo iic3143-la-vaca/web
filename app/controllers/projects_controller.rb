@@ -14,13 +14,12 @@ class ProjectsController < ApplicationController
 
   private
 
-  def project_params
-    # whitelist params
-    params.permit(:id)
-  end
+    def project_params
+      # whitelist params
+      params.permit(:id)
+    end
 
-  def set_project
-    @project = Project.find(params[:id])
-  end
-
+    def set_project
+      @project = Project.find(params[:id])
+    end
 end

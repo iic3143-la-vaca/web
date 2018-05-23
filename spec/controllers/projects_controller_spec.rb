@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ProjectsController, type: :controller do
 
   let!(:user) { create(:user) }
-  let!(:projects_list) { create_list(:project, 10, user:user) }
+  let!(:projects_list) { create_list(:project, 10, user: user) }
 
   describe "GET index" do
 
