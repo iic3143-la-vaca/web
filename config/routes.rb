@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   # custom routes
   root to: 'projects#index'
-  resource :projects, only: [:new, :show]
+  resource :projects, only: [:new, :create, :show]
 
   get 'home' => 'projects#index'
   get 'about' => 'pages#about'

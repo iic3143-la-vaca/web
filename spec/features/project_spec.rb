@@ -15,13 +15,16 @@ feature 'Project is posted' do
     fill_in 'project[creators_description]', with: project.creators_description
 
     fill_in 'project[goal]', with: project.goal
-    fill_in 'Ending Date', with: project.ending_date
+    fill_in 'project[deadline]', with: project.deadline
 
     project.rewards.each_with_index do |reward, i|
-      fill_in "rewards_attributes[#{i}][description]", with: reward.description
-      fill_in "rewards_attributes[#{i}][lower_bound]", with: reward.lower_bound
-      fill_in "rewards_attributes[#{i}][upper_bound]", with: reward.upper_bound
-      fill_in "rewards_attributes[#{i}][dispatchable]", with: reward.dispatchable
+      fill_in "project[rewards_attributes][#{i}][name]", with: reward.name
+      fill_in "project[rewards_attributes][#{i}][description]", with: reward.description
+      fill_in "project[rewards_attributes][#{i}][lower_bound]", with: reward.lower_bound
+      fill_in "project[rewards_attributes][#{i}][upper_bound]", with: reward.upper_bound
+      if reward.dispatchable
+        check "project[rewards_attributes][#{i}][dispatchable]"
+      end
     end
 
     click_button 'Submit'
