@@ -1,24 +1,21 @@
-# README
+# La Vaca
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+La Vaca is a collaborative crowd-funding platform, that aims to support environmental initiatives. You will find here numerous projects fighting for a sustainable economy, the respect of our environment, etc... Our objective is to support them by providing a collaborative source of funding, and make those ideas come true.
 
-Things you may want to cover:
+## Application
 
-* Ruby version
+Built in rails 5.2 using ruby 2.4.
 
-* System dependencies
+Configuration to run locally
+~~~
+rake db:create
+rake db:migrate
+rake db:seed
+rails s
+~~~
+Then go to localhost:3000
 
-* Configuration
 
-* Database creation
+Api documentation can be seen in route `/apidoc`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Tested with Rspec
