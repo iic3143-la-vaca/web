@@ -21,7 +21,8 @@ class Project < ApplicationRecord
   validates :status, presence: true
 
   # Nested attributes
-  accepts_nested_attributes_for :rewards
+  # accepts_nested_attributes_for :rewards, reject_if: :all_blank
+  accepts_nested_attributes_for :rewards, reject_if: lambda { |attributes| attributes['name'].blank? }
 
   after_initialize :init
 
