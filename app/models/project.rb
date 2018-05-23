@@ -22,4 +22,10 @@ class Project < ApplicationRecord
 
   # Nested attributes
   accepts_nested_attributes_for :rewards
+
+  after_initialize :init
+
+  def init
+    self.status ||= 0
+  end
 end
