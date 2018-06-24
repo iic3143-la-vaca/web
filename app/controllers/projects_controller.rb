@@ -44,13 +44,6 @@ class ProjectsController < ApplicationController
     else
       render action: :edit
     end
-    # @project = current_user.projects.new(project_params)
-    # if @project.save
-    #   flash[:success] = "Project created succesfully."
-    #   redirect_to @project
-    # else
-    #   render action: :new
-    # end
   end
 
   api :GET, '/postulations'
