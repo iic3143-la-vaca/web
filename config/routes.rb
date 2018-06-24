@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'refuse' => 'projects#refuse_view'
   post 'refuse' => 'projects#refuse_project'
 
+  post 'comment' => 'comments#create'
+
   # Legacy routes
   # get 'new_project' => 'pages#new_project'
   # get 'project' => 'pages#project'
