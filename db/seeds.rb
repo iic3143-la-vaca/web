@@ -17,7 +17,9 @@ projects = FactoryBot.create_list(:project, 3, user: carlos, status: 'running')
 pending_projects1 = FactoryBot.create_list(:project, 3, user: louise, status: 'pending')
 pending_projects2 = FactoryBot.create_list(:project, 3, user: rodolfo, status: 'pending')
 
-projects = FactoryBot.create_list(:project, 10, user: carlos)
+# rejected projects
+
+rejected_projects = FactoryBot.create_list(:project, 3, user: louise, status: 'rejected')
 
 FactoryBot.create_list(:tag, 10)
 

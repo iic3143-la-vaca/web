@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show]
+  before_action :set_project, only: [:show, :refuse_view]
   before_action :authenticate_user!, only: [:new, :create]
 
   api :GET, '/'
@@ -31,7 +31,19 @@ class ProjectsController < ApplicationController
 
   api :GET, '/postulations'
   def postulations
-    @projects = Project.where(status: 'pending')
+    @pending_projects = Project.where(status: 'pending')
+    @rejected_projects = Project.where(status: 'rejected')
+  end
+
+  api :GET, '/refuse'
+  param :id, :number, required: true
+  def refuse_view
+  end
+
+  api :POST, '/refuse'
+  param :id, :number, required: true
+  def refuse_project
+    p 'fands;fnsadn'
   end
 
   private

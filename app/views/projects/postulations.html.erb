@@ -1,6 +1,6 @@
 <h2>Postulations List</h2>
 <div class="row">
-  <% @projects.each do |project| %>
+  <% @pending_projects.each do |project| %>
     <div class="col-md-12 col-sm-12 col-xs-12">
       <table class="contact_list">
         <td><%= link_to project.title, project_path(id: project.id) %></td>
@@ -8,8 +8,25 @@
         <td><%= number_to_currency(project.goal, precision: 0) %></td>
         <td><%= project.deadline.strftime('%d-%m-%y') %></td>
         <td><button type="submit" class="btn btn-round btn-success" style="text-align: center;">Accept</button></td>
-        <td><button type="submit" class="btn btn-round btn-danger" style="text-align: center;">Refuse</button></td>
+        <td><b><%= link_to 'Refuse', refuse_path(id: project.id), method: :get,
+                             class:"btn btn-round btn-danger", style:"text-align: center;"%></b></td>
       </table>
     </div>
+  <% end %>
+</div>
+<h2>Rejected Projects</h2>
+<div class="row">
+  <% @rejected_projects.each do |project| %>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <table class="contact_list">
+          <td><%= link_to project.title, project_path(id: project.id) %></td>
+          <td><%= project.description %></td>
+          <td><%= number_to_currency(project.goal, precision: 0) %></td>
+          <td><%= project.deadline.strftime('%d-%m-%y') %></td>
+          <td><button type="submit" class="btn btn-round btn-success" style="text-align: center;">Accept</button></td>
+          <td><b><%= link_to 'Refuse', refuse_path(id: project.id), method: :get,
+                             class:"btn btn-round btn-danger", style:"text-align: center;"%></b></td>
+        </table>
+      </div>
   <% end %>
 </div>
