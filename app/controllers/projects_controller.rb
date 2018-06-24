@@ -35,7 +35,6 @@ class ProjectsController < ApplicationController
   end
 
   api :PUT, '/projects/'
-  param :id, :number, required: true
   def update
     if @project.update(project_params)
       UserMailer.pending_for_review_email(@project).deliver_now

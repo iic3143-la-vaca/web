@@ -27,5 +27,4 @@ class User < ApplicationRecord
 
   # attr_reader :projects
   scope :accepted_projects,  ->  { 'hola' }
-
 end
