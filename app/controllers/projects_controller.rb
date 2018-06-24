@@ -29,6 +29,23 @@ class ProjectsController < ApplicationController
     end
   end
 
+  api :GET, '/projects/edit'
+  def edit
+    # @project = Project.new
+    # 3.times { @project.rewards.build }
+  end
+
+  api :PUT, '/projects'
+  def update
+    # @project = current_user.projects.new(project_params)
+    # if @project.save
+    #   flash[:success] = "Project created succesfully."
+    #   redirect_to @project
+    # else
+    #   render action: :new
+    # end
+  end
+
   api :GET, '/postulations'
   def postulations
     @pending_projects = Project.where(status: 'pending')
