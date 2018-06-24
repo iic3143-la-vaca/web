@@ -11,13 +11,15 @@ louise = User.create(name: 'louise', email: 'louise@uc.cl', password: '123456', 
 rodolfo = User.create(name: 'rodolfo', email: 'rodolfo@uc.cl', password: '123456', role: 'normal')
 admin = User.create(name: 'admin', email: 'admin@uc.cl', password: '123456', role: 'admin')
 
-projects = FactoryBot.create_list(:project, 3, user: carlos, status: 'running')
+projects = FactoryBot.create_list(:project, 3, user: louise, status: 'running')
 
 # pending projects
-pending_projects1 = FactoryBot.create_list(:project, 3, user: louise, status: 'pending')
+pending_projects1 = FactoryBot.create_list(:project, 3, user: carlos, status: 'pending')
 pending_projects2 = FactoryBot.create_list(:project, 3, user: rodolfo, status: 'pending')
 
-projects = FactoryBot.create_list(:project, 10, user: carlos)
+# rejected projects
+
+rejected_projects = FactoryBot.create_list(:project, 3, user: louise, status: 'rejected')
 
 FactoryBot.create_list(:tag, 10)
 
