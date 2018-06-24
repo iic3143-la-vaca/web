@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   api :GET, '/'
   def index
-    @projects = Project.all
+    @projects = Project.where(status: 'running')
   end
 
   api :GET, '/projects/:id'
@@ -27,6 +27,11 @@ class ProjectsController < ApplicationController
     else
       render action: :new
     end
+  end
+
+  api :GET, '/postulations'
+  def postulations
+    @projects = Project.where(status: 'pending')
   end
 
   private
