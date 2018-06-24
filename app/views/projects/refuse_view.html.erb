@@ -6,20 +6,20 @@
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
-        <br>
         <p>Your message will be sent to the creator to explain him why the project's application has been rejected.</p>
-        <form class="form-horizontal form-label-left input_mask">
-          <label class="control-label col-md-2 col-sm-2 col-xs-12">Message</label>
-          <div class="col-md-10 col-sm-10 col-xs-12 form-general">
-            <textarea class="form-control" id="rejection_message" required="required" placeholder="Explain why the proposition has been rejected." type="text"></textarea>
-          </div>
-        </form>
         <div class="ln_solid"></div>
-        <div class="form-group">
-          <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-            <%= button_to 'Send', refuse_path(id: @project.id), method: :post,
-                          type:"submit", class:"btn btn-success" %>
-          </div>
+        <div class="col-md-10 col-sm-10 col-xs-12 form-general">
+          <%= form_tag url: {controller: 'projects', action: 'refuse_project'}, method: :post do %>
+            <div class="form-group">
+              <div class="control-label col-md-2 col-sm-2 col-xs-12">Message</div>
+                <%= text_area_tag :message, '', class:"form-control", required:"required", id: 'message-text-area',
+                                placeholder:"Explain why the proposition has been rejected.", type:"text"  %>
+                <%= hidden_field_tag :id, @project.id %>
+              </div>
+              <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                <%= submit_tag 'Send', class:"btn btn-success"%>
+              </div>
+          <% end %>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :refuse_view]
+  before_action :set_project, only: [:show, :refuse_view, :refuse_project]
   before_action :authenticate_user!, only: [:new, :create]
 
   api :GET, '/'
@@ -42,8 +42,13 @@ class ProjectsController < ApplicationController
 
   api :POST, '/refuse'
   param :id, :number, required: true
+  param :message, String, required: true
   def refuse_project
-    p 'fands;fnsadn'
+    @project.update(status: 'rejected')
+    UserMailer.rejection_email(@project, rejection_params[:message]).deliver_now
+    @pending_projects = Project.where(status: 'pending')
+    @rejected_projects = Project.where(status: 'rejected')
+    render 'postulations'
   end
 
   private
@@ -55,6 +60,10 @@ class ProjectsController < ApplicationController
         rewards_attributes: [ :id, :name, :description, :lower_bound,
           :upper_bound, :dispatchable]
       )
+    end
+
+    def rejection_params
+      params.permit(:message, :id)
     end
 
     def set_project
