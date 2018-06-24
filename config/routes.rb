@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'about' => 'pages#about'
 
+  get 'postulations' => 'projects#postulations'
+
   # Legacy routes
   # get 'new_project' => 'pages#new_project'
   # get 'project' => 'pages#project'
