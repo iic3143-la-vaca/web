@@ -82,6 +82,43 @@ RSpec.describe ProjectsController, type: :controller do
     it "returns status 200" do
       expect(response.status).to eq(200)
     end
+  end
 
+  describe "GET edit" do
+    before { get :edit,  params: { id: rejected_projects_list[1].id } }
+    let(:project) { rejected_projects_list[1] }
+
+    it "assigns @project" do
+      expect(assigns(:project)).to eq(project)
+    end
+
+    it "renders the index template" do
+      expect(response).to render_template("edit")
+    end
+
+    it "returns status 200" do
+      expect(response.status).to eq(200)
+    end
+  end
+
+  pending describe "PUT update" do
+    before { put :update,  params: { id: rejected_projects_list[1].id } }
+    let(:project) { rejected_projects_list[1] }
+
+    it "assigns @project" do
+      expect(assigns(:project)).to eq(project)
+    end
+
+    it "assigns @project" do
+      expect(project.status).to eq('pending')
+    end
+
+    it "renders the index template" do
+      expect(response).to render_template("pages/home")
+    end
+
+    it "returns status 200" do
+      expect(response.status).to eq(200)
+    end
   end
 end
