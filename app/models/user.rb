@@ -24,4 +24,8 @@ class User < ApplicationRecord
   validates :email, presence: true,
       format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
       uniqueness: { case_sensitive: false }
+
+  # attr_reader :projects
+  scope :accepted_projects,  ->  { 'hola' }
+
 end
