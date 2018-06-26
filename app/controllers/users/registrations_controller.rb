@@ -12,6 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(sign_up_params)
     if @user.save
+      flash[:success] = "Successful Registration."
       redirect_to root_path
     else
       flash.now[:error] = @user.errors.full_messages
