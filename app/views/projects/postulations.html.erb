@@ -6,7 +6,7 @@
         <td><%= link_to project.title, project_path(id: project.id) %></td>
         <td><%= project.description %></td>
         <td><%= number_to_currency(project.goal, precision: 0) %></td>
-        <td><%= project.deadline.strftime('%d-%m-%y') %></td>
+        <td width="100px;"><%= project.deadline.strftime('%d-%m-%y') %></td>
         <td><b><%= link_to 'Accept', project_accept_path(project_id: project.id), method: :patch,
                              class:"btn btn-round btn-success", style:"text-align: center;"%></b></td>
         <td><b><%= link_to 'Refuse', refuse_path(id: project.id), method: :get,
@@ -23,7 +23,7 @@
           <td><%= link_to project.title, project_path(id: project.id) %></td>
           <td><%= project.description %></td>
           <td><%= number_to_currency(project.goal, precision: 0) %></td>
-          <td><%= project.deadline.strftime('%d-%m-%y') %></td>
+          <td width="100px;"><%= project.deadline.strftime('%d-%m-%y') %></td>
           <td><b><%= link_to 'Accept', project_accept_path(project_id: project.id), method: :patch,
                               class:"btn btn-round btn-success", style:"text-align: center;"%></b></td>
           <td><b><%= link_to 'Refuse', refuse_path(id: project.id), method: :get,
