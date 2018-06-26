@@ -4,6 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  # Assign default role
+  after_initialize :default_role
+
+  def default_role
+    self.role = :normal if self.role.nil?
+  end
+
   # Enum
   enum role: [:admin, :normal], _suffix: true
 
@@ -24,4 +31,7 @@ class User < ApplicationRecord
   validates :email, presence: true,
       format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
       uniqueness: { case_sensitive: false }
+
+  # attr_reader :projects
+  scope :accepted_projects,  ->  { 'hola' }
 end

@@ -33,6 +33,41 @@
                   <li><a href="/about">About Us</a></li>
                 </ul>
               </div>
+              <% if current_user %>
+                <% if current_user.admin_role? %>
+                      <div class="menu_section">
+                    <h3>Admin Section</h3>
+                    <ul class="nav side-menu">
+                      <li><a href="/postulations">Postulations List</a></li>
+                    </ul>
+                  </div>
+                <% elsif current_user.normal_role? and !current_user.projects.empty? %>
+                      <div class="menu_section">
+                        <h3>Accepted Projects</h3>
+                        <ul class="nav side-menu">
+                          <% current_user.projects.where(status: 'running').each do |project| %>
+                              <li><%= link_to project.title, project_path(id: project.id) %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                    <div class="menu_section">
+                      <h3>Pending Projects</h3>
+                      <ul class="nav side-menu">
+                        <% current_user.projects.where(status: 'pending').each do |project| %>
+                            <li><%= link_to project.title, project_path(id: project.id) %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                    <div class="menu_section">
+                      <h3>Rejected Projects</h3>
+                      <ul class="nav side-menu">
+                        <% current_user.projects.where(status: 'rejected').each do |project| %>
+                            <li><%= link_to project.title, project_path(id: project.id) %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>

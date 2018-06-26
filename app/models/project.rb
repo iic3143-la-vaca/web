@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   # Enums
-  enum status: [:pending, :running, :finished, :archived], _suffix: true
+  enum status: [:pending, :rejected, :running, :finished, :archived], _suffix: true
 
   # Associations
   belongs_to :user

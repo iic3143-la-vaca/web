@@ -1,0 +1,11 @@
+Dear <%= @project.user.name %>
+
+  Your project has been rejected due the following reasons:
+
+  <%= @reasons %>
+
+  You can edit your project and then send a new request for postulation in the following link.
+
+  localhost:3000/projects/<%= @project.id %>/edit
+
+Thanks for participating, and have a great day!

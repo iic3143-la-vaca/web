@@ -1,5 +1,6 @@
 <h2><%= @project.title %></h2>
 <div class="row">
+
   <div class="col-md-9 col-sm-8 col-xs-12">
     <div class="x_panel tile">
       <div class="x_title">
@@ -32,15 +33,35 @@
       </div>
     </div>
   </div>
+  <% if current_user %>
+      <% if current_user == @project.user %>
+          <div class="col-md-3 col-sm-4 col-xs-4">
+            <div class="row">
+              <div class="x_panel tile">
+                <div class="x_title">
+                  <h3>Edit Your Project</h3>
+                </div>
+                <div class="x_content">
+                  <div style="text-align: center;">
+                    <p style="text-align: center;">Status: <%= @project.status %></p>
+                    <%= button_to 'Edit', edit_project_path(id: @project.id), method: :get,
+                                  type: "submit", class: "btn btn-primary" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      <% end %>
+  <% end %>
   <div class="col-md-3 col-sm-4 col-xs-4">
     <div class="row">
       <div class="x_panel tile">
         <div class="x_content">
           <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            <p style="font-size: 36px; text-align: center; color: green;">XX%</p>
+            <p style="font-size: 36px; text-align: center; color: green;"><%= '%.1f' % (100 * @project.donations.sum(:amount) / @project.goal) %>%</p>
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            <p style="text-align: center;"><b>$xxx.xxx</b></p>
+            <p style="text-align: center;"><b><%= number_to_currency(@project.donations.sum(:amount)) %></b></p>
             <p style="text-align: center;">collected out of</p>
             <p style="text-align: center;"><%= number_to_currency(@project.goal) %></p>
           </div>
@@ -50,7 +71,7 @@
             <div class="ln_solid" style="margin: 10px"></div>
           </div>
           <p style="text-align: center;">
-            <button type="submit" class="btn btn-success" style="text-align: center;">Collaborate</button>
+            <%= link_to "Collaborate", project_collaborate_path(@project), class: "btn btn-success", style: "text-align: center;" %>
           </p>
         </div>
       </div>
@@ -65,7 +86,7 @@
         <!-- LINK TO POSTULANTE USER-->
         <div class="x_content">
           <p style="text-align: center;"><%= @project.user.name %></p>
-          <p style="text-align: center;">email <%= @project.user.email %></p>
+          <p style="text-align: center;">Email: <%= @project.user.email %></p>
         </div>
       </div>
     </div>
@@ -84,10 +105,85 @@
               <div class="ln_solid" style="margin: 10px"></div>
           <% end %>
           <p style="text-align: center;">
-            <button type="submit" class="btn btn-success" style="text-align: center;">Collaborate</button>
+            <%= link_to "Collaborate", project_collaborate_path(@project), class: "btn btn-success", style: "text-align: center;" %>
           </p>
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-9 col-sm-8 col-xs-12">
+    <!-- NEWS -->
+    <div class="x_panel">
+      <% if current_user and current_user.id == @project.user.id %>
+        <div class="x_title">
+          <h2>Post a News</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <div class="col-md-10 col-sm-10 col-xs-12 form-general">
+            <%= form_with(model: News.new, url: news_path(id: @project.id), method: :post) do |f|%>
+                <div class="form-group">
+                  <div class="control-label col-md-2 col-sm-2 col-xs-12">Headline</div>
+                  <%= f.text_field :headline, class:"form-control",
+                                    placeholder:"The news headline", type:"text"  %>
+                </div>
+                <div class="form-group">
+                  <div class="control-label col-md-2 col-sm-2 col-xs-12">Body</div>
+                  <%= f.text_area :body, class:"form-control",
+                                    placeholder:"The news body", type:"text"  %>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-10">
+                  <%= f.submit 'Post', class:"btn btn-success"%>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if @project.news.length > 0 %>
+        <div class="x_content">
+          <h2>News</h2>
+          <% @project.news.each do |news| %>
+              <h3><%= news.headline %></h3>
+              <p><%= news.body %></p>
+              <div class="ln_solid" style="margin: 10px"></div>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+
+    <!-- COMMENTS -->
+    <div class="x_panel">
+      <% if current_user %>
+        <div class="x_title">
+          <h2>Leave a Comment</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+          <div class="col-md-10 col-sm-10 col-xs-12 form-general">
+            <%= form_with(model: Comment.new, url: comment_path(id: @project.id), method: :post) do |f|%>
+                <div class="form-group">
+                  <div class="control-label col-md-2 col-sm-2 col-xs-12">Message</div>
+                  <%= f.text_area :body, class:"form-control",
+                                    placeholder:"Leave a comment for the project comunity.", type:"text"  %>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-10">
+                  <%= f.submit 'Comment', class:"btn btn-success"%>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+        <div class="x_content">
+          <% @project.comments.each do |comment| %>
+              <p style=" color: green;"><%= comment.user.name %>:</p>
+              <p><%= comment.body %></p>
+              <div class="ln_solid" style="margin: 10px"></div>
+          <% end %>
+        </div>
+      </div>
   </div>
 </div>
