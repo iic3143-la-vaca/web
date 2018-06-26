@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :refuse_view, :refuse_project, :edit, :update]
+  before_action :set_project, only: [:show, :refuse_view, :refuse_project, :edit, :update, :accept_project]
   before_action :authenticate_user!, only: [:new, :create]
 
   api :GET, '/'
@@ -67,6 +67,15 @@ class ProjectsController < ApplicationController
     render 'postulations'
   end
 
+  api :PATCH, '/projects/:project_id/accept'
+  param :project_id, :number, required: true
+  def accept_project
+    @project.update(status: 'running')
+    @pending_projects = Project.where(status: 'pending')
+    @rejected_projects = Project.where(status: 'rejected')
+    render 'postulations'
+  end
+
   private
 
     def project_params
@@ -83,6 +92,10 @@ class ProjectsController < ApplicationController
     end
 
     def set_project
-      @project = Project.find(params[:id])
+      if not params[:id].nil?
+        @project = Project.find(params[:id])
+      else
+        @project = Project.find(params[:project_id])
+      end
     end
 end
