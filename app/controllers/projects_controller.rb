@@ -73,6 +73,7 @@ class ProjectsController < ApplicationController
     @project.update(status: 'running')
     @pending_projects = Project.where(status: 'pending')
     @rejected_projects = Project.where(status: 'rejected')
+    flash[:success] = "Project accepted, a message has been sent to the owner."
     render 'postulations'
   end
 
