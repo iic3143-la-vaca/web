@@ -145,14 +145,14 @@ Reward.create!(
 
 # pending projects
 pending_1 = Project.create!(
-    title: 'Save Penguins!',
-    deadline: Date.today + 15,
-    description: 'There are just hours left to Invest in the Nest! This is your last chance to join this project, make more nests for African penguins, and pick one of our exclusive rewards. Watch our video to meet Tanga, a baby penguin at the Dallas Zoo. Help save this incredible species from extinction and pledge now!',
-    financing_description: 'The majority of the funds we crowdsource on Kickstarter will go directly to the production and distribution of 1,500 artificial nests. Once we’ve built 1,500 nests, we’ll place them in up to a dozen penguin colonies all across South Africa and Namibia. In addition to the costs of production and distribution, Kickstarter funds will be used to produce marketing materials and to produce and deliver unique penguin-inspired rewards for backers like you!',
-    creators_description: 'Founded in 1924, the Association of Zoos and Aquariums is a nonprofit organization dedicated to the advancement of zoos and aquariums in the areas of conservation, animal welfare, education, science, and recreation. AZA is the accrediting body for the top zoos and aquariums in the United States and eight other countries. Currently, over 230 aquariums, nature centers, science centers and zoos are accredited by AZA.',
-    goal: 19356000,
-    status: 'pending',
-    user: carlos
+  title: 'Save Penguins!',
+  deadline: Date.today + 15,
+  description: 'There are just hours left to Invest in the Nest! This is your last chance to join this project, make more nests for African penguins, and pick one of our exclusive rewards. Watch our video to meet Tanga, a baby penguin at the Dallas Zoo. Help save this incredible species from extinction and pledge now!',
+  financing_description: 'The majority of the funds we crowdsource on Kickstarter will go directly to the production and distribution of 1,500 artificial nests. Once we’ve built 1,500 nests, we’ll place them in up to a dozen penguin colonies all across South Africa and Namibia. In addition to the costs of production and distribution, Kickstarter funds will be used to produce marketing materials and to produce and deliver unique penguin-inspired rewards for backers like you!',
+  creators_description: 'Founded in 1924, the Association of Zoos and Aquariums is a nonprofit organization dedicated to the advancement of zoos and aquariums in the areas of conservation, animal welfare, education, science, and recreation. AZA is the accrediting body for the top zoos and aquariums in the United States and eight other countries. Currently, over 230 aquariums, nature centers, science centers and zoos are accredited by AZA.',
+  goal: 19356000,
+  status: 'pending',
+  user: carlos
 )
 Reward.create!(
   name: 'Nest To Meet You Starter Pack',
