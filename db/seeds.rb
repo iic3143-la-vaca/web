@@ -6,10 +6,36 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-carlos = User.create!(name: 'carlos', email: 'ctalvarez@uc.cl', password: '123456', role: 'normal')
-louise = User.create!(name: 'louise', email: 'louise@uc.cl', password: '123456', role: 'normal')
-rodolfo = User.create!(name: 'rodolfo', email: 'rodolfo@uc.cl', password: '123456', role: 'normal')
+carlos = User.create!(name: 'Carlos Álvarez', email: 'ctalvarez@uc.cl', password: '123456', role: 'normal')
+louise = User.create!(name: 'Louise Nicolas', email: 'louise@uc.cl', password: '123456', role: 'normal')
+rodolfo = User.create!(name: 'Rodolfo Palma', email: 'rodolfo@uc.cl', password: '123456', role: 'normal')
 admin = User.create!(name: 'admin', email: 'admin@uc.cl', password: '123456', role: 'admin')
+
+# Bank accounts
+bank_1 = BankAccount.create!(
+    bank: 'Banco Santander',
+    account: '4000-700-564',
+    rut: '11.111.111-1',
+    account_type: 1,
+    email: carlos.email,
+    user: carlos
+)
+bank_2 = BankAccount.create!(
+    bank: 'Banco de Chile',
+    account: '700-006-1652',
+    rut: '10.004.056-3',
+    account_type: 1,
+    email: louise.email,
+    user: louise
+)
+bank_3 = BankAccount.create!(
+    bank: 'Banco Itaú',
+    account: '600-1324-563',
+    rut: '18.333.245-9',
+    account_type: 1,
+    email: rodolfo.email,
+    user: rodolfo
+)
 
 # Running projects
 running_1 = Project.create!(
