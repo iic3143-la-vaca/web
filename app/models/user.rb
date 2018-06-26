@@ -3,6 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  
+  # Assign default role
+  after_initialize :default_role
+
+  def default_role
+    self.role = :normal
+  end
 
   # Enum
   enum role: [:admin, :normal], _suffix: true
