@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :refuse_view, :refuse_project, :edit, :update, :accept_project]
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :set_project, only: [:show, :refuse_view, :refuse_project, :edit, :update, :accept_project, :collaborate, :process_colaboration]
+  before_action :authenticate_user!, only: [:new, :create, :collaborate, :refuse_view, :refuse_project, :accept_project, :edit, :update, :process_colaboration]
 
   api :GET, '/'
   def index
@@ -76,6 +76,26 @@ class ProjectsController < ApplicationController
     render 'postulations'
   end
 
+  api :GET, '/projects/:project_id/collaborate'
+  param :project_id, :number, required: true
+  def collaborate
+  end
+
+  api :POST, '/projects/:project_id/collaborate'
+  param :project_id, :number, required: true
+  def process_colaboration
+    @donation = Donation.new(
+      user: current_user,
+      project: @project,
+      amount: collaboration_params[:contribution_amount]
+    )
+    if @donation.save
+      redirect_to project_path(@project)
+    else
+      render action: :collaborate
+    end
+  end
+
   private
 
     def project_params
@@ -89,6 +109,10 @@ class ProjectsController < ApplicationController
 
     def rejection_params
       params.permit(:message, :id)
+    end
+
+    def collaboration_params
+      params.permit(:contribution_amount, :project_id)
     end
 
     def set_project

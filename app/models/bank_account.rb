@@ -1,6 +1,6 @@
 class BankAccount < ApplicationRecord
   # Enums
-  enum type: [:checking, :current], _suffix: true
+  enum account_type: [:checking, :current], _suffix: true
 
   # Associations
   belongs_to :user

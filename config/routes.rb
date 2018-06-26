@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # custom routes
   root to: 'projects#index'
   resources :projects, only: [:show, :new, :create, :edit, :update] do
+    get 'collaborate'
+    post 'collaborate' => 'projects#process_colaboration'
     patch 'accept' => 'projects#accept_project'
   end
 

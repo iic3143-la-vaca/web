@@ -58,10 +58,10 @@
       <div class="x_panel tile">
         <div class="x_content">
           <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            <p style="font-size: 36px; text-align: center; color: green;">XX%</p>
+            <p style="font-size: 36px; text-align: center; color: green;"><%= '%.1f' % (100 * @project.donations.sum(:amount) / @project.goal) %>%</p>
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            <p style="text-align: center;"><b>$xxx.xxx</b></p>
+            <p style="text-align: center;"><b><%= number_to_currency(@project.donations.sum(:amount)) %></b></p>
             <p style="text-align: center;">collected out of</p>
             <p style="text-align: center;"><%= number_to_currency(@project.goal) %></p>
           </div>
@@ -71,7 +71,7 @@
             <div class="ln_solid" style="margin: 10px"></div>
           </div>
           <p style="text-align: center;">
-            <button type="submit" class="btn btn-success" style="text-align: center;">Collaborate</button>
+            <%= link_to "Collaborate", project_collaborate_path(@project), class: "btn btn-success", style: "text-align: center;" %>
           </p>
         </div>
       </div>
@@ -105,7 +105,7 @@
               <div class="ln_solid" style="margin: 10px"></div>
           <% end %>
           <p style="text-align: center;">
-            <button type="submit" class="btn btn-success" style="text-align: center;">Collaborate</button>
+            <%= link_to "Collaborate", project_collaborate_path(@project), class: "btn btn-success", style: "text-align: center;" %>
           </p>
         </div>
       </div>
