@@ -8,7 +8,7 @@ class User < ApplicationRecord
   after_initialize :default_role
 
   def default_role
-    self.role = :normal
+    self.role = :normal if self.role.nil?
   end
 
   # Enum
