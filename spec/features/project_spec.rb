@@ -33,6 +33,6 @@ feature 'Project is posted' do
 
   scenario 'with invalid user credentials' do
     visit new_project_path
-    expect(page).to have_text 'Log in'
+    expect(page).to have_text 'Sign in'
   end
 end

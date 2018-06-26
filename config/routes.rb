@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   post 'refuse' => 'projects#refuse_project'
 
   post 'comment' => 'comments#create'
-  
+
   post 'news' => 'news#create'
 
   # Legacy routes

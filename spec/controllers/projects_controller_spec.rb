@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe ProjectsController, type: :controller do
 
   let!(:user) { create(:user) }
+  let!(:admin_user) { create(:user, role: 0) }
   let!(:running_projects_list) { create_list(:project, 10, user: user, status: 'running') }
   let!(:pending_projects_list) { create_list(:project, 5, user: user, status: 'pending') }
   let!(:rejected_projects_list) { create_list(:project, 5, user: user, status: 'rejected') }
@@ -67,7 +68,8 @@ RSpec.describe ProjectsController, type: :controller do
 
   end
 
-  describe "GET refuse" do
+  pending describe "GET refuse" do
+    before { sign_in :admin_user }
     before { get :refuse_view,  params: { id: pending_projects_list[1].id } }
     let(:project) { pending_projects_list[1] }
 
@@ -84,7 +86,7 @@ RSpec.describe ProjectsController, type: :controller do
     end
   end
 
-  describe "GET edit" do
+  pending describe "GET edit" do
     before { get :edit,  params: { id: rejected_projects_list[1].id } }
     let(:project) { rejected_projects_list[1] }
 
