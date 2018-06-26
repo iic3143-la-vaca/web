@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   # custom routes
   root to: 'projects#index'
-  resources :projects, only: [:show, :new, :create, :edit, :update]
+  resources :projects, only: [:show, :new, :create, :edit, :update] do
+    patch 'accept' => 'projects#accept_project'
+  end
 
   get 'about' => 'pages#about'
 
